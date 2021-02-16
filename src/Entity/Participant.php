@@ -62,7 +62,7 @@ class Participant implements UserInterface
     private $actif;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Sortie", mappedBy="participants")
+     * @ManyToMany(targetEntity="App\Entity\Sortie", mappedBy="participants")
      */
     private $sorties;
 

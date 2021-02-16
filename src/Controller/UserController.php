@@ -40,6 +40,6 @@ class UserController extends AbstractController
             return $this->redirectToRoute('accueil', ['id'=> $participant->getId()]);
         }
 
-        return $this->render('user/inscription.html.twig', ["inscriptionForm" => $inscriptionForm->createView() ]);
+        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView() ]);
     }
 }
