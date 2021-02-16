@@ -30,13 +30,16 @@ class UserController extends AbstractController
     {
         $participant = new Participant();
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
-        $inscriptionForm ->handleRequest($request);
+        /**$inscriptionForm ->handleRequest($request);
         if ($inscriptionForm -> isSubmitted() && $inscriptionForm->isValid())
         {
             $em->persist($participant);
             $em->flush();
-        }
 
-        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm ->createView() ]);
+            $this->addFlash('success', 'L\'utilisateur a bien été enregistré !');
+            return $this->redirectToRoute('accueil', ['id'=> $participant->getId()]);
+        }**/
+
+        return $this->render('user/inscription.html.twig', ["inscriptionForm" => $inscriptionForm->createView() ]);
     }
 }

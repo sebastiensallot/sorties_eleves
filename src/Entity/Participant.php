@@ -21,6 +21,11 @@ class Participant implements UserInterface
     private $id;
 
     /**
+     * @ORM\Column (type="string", length=255)
+     */
+    private $pseudo;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
@@ -74,6 +79,23 @@ class Participant implements UserInterface
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @param mixed $pseudo
+     */
+    public function setPseudo($pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
 
     public function getNom(): ?string
     {
@@ -196,5 +218,6 @@ class Participant implements UserInterface
     {
         $this->sorties = $sorties;
     }
+
 
 }
