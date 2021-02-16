@@ -38,7 +38,7 @@ class Sortie
     private $dateLimiteInscription;
 
     /**
-     * @ORM\Column(type="number")
+     * @ORM\Column(type="integer")
      */
     private $nbInscriptionsMax;
 
