@@ -337,7 +337,11 @@
             "ref": "0a4bae19389d3b9cba1ca0102e3b2bccea724603"
         },
         "files": [
+
             "config/packages/security.yaml"
+
+
+
         ]
     },
     "symfony/security-core": {
