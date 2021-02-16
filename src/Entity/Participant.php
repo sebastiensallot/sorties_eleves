@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ParticipantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\OneToMany;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -61,7 +62,7 @@ class Participant implements UserInterface
     private $actif;
 
     /**
-     * @OneToMany(targetEntity="App\Entity\Sortie", mappedBy="participants")
+     * @ManyToMany(targetEntity="App\Entity\Sortie", mappedBy="participants")
      */
     private $sorties;
 

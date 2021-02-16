@@ -38,7 +38,7 @@ class Sortie
     private $dateLimiteInscription;
 
     /**
-     * @ORM\Column(type="number")
+     * @ORM\Column(type="integer")
      */
     private $nbInscriptionsMax;
 
@@ -56,6 +56,8 @@ class Sortie
      * @ORM\ManyToMany(targetEntity="App\Entity\Participant", inversedBy="sorties")
      */
     private $participants;
+
+
 
 
     //getters et setters
@@ -168,5 +170,22 @@ class Sortie
     {
         $this->etat = $etat;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
+
+    /**
+     * @param mixed $participants
+     */
+    public function setParticipants($participants): void
+    {
+        $this->participants = $participants;
+    }
+
 
 }
