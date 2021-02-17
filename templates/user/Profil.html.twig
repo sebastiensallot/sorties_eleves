@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Profil {% endblock %}
+
+{%  block main %}
+
+    <div class="ensemble-block">
+    <div class="photo" >
+    <img src="{{ asset ('img/detective-avatar.jpg')}}">
+    </div>
+
+    <div class="profil">
+<h1> Profil </h1>
+
+<p>  Prénom : </p>
+<p>  Nom : </p>
+<p>  Télephone : </p>
+<p>  E-mail : </p>
+<p>  Campus : </p>
+
+<input type="button" value="retour">
+
+    </div>
+    </div>
+
+{% endblock %}
