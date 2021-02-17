@@ -52,12 +52,12 @@ class Participant implements UserInterface
     private $motDePasse;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":0})
      */
     private $administrateur;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default":0})
      */
     private $actif;
 
@@ -189,7 +189,7 @@ class Participant implements UserInterface
 
     public function getPassword()
     {
-        // TODO: Implement getPassword() method.
+        return $this->motDePasse;
     }
 
     public function getSalt()
@@ -199,7 +199,7 @@ class Participant implements UserInterface
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->pseudo;
     }
 
     public function eraseCredentials() {}

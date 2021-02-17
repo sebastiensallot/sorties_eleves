@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Connexion {% endblock %}
+
+{% block main %}
+    <form class="box" method="POST">
+
+        <h1>Connectez-vous !</h1>
+
+        <label for="pseudo">Pseudo</label>
+        <input type="text" name="pseudo" id="pseudo" /><br/><br>
+
+        <label for="motDePasse">Mot de Passe</label>
+        <input type="password" name="motDePasse" id="motDePasse" /> <br/><br>
+
+        <div id="connexion">
+            <a href="{{ path('accueil') }}">
+                <input type="submit" value="Connexion">
+            </a>
+
+            <div id="mdp_souvenir">
+                <input type="checkbox" name="souvenir" value="souvenir" id="souvenir"/>
+                <label for="souvenir" class="choicelabel"> Se souvenir de moi </label><br/><br>
+
+                <a href=""> Mot de passe oublié </a> <br/><br>
+            </div>
+
+        </div><br>
+    </form>
+
+{% endblock %}
+
+
