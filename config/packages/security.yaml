@@ -17,7 +17,7 @@ security:
                 path: logout
                 target: accueil
     encoders:
-        App\Entity\User:
+        App\Entity\Participant:
             algorithm: bcrypt
 
     access_control:
