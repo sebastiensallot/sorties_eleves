@@ -187,21 +187,7 @@ class Sortie
         $this->etat = $etat;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getParticipants()
-    {
-        return $this->participants;
-    }
-
-    /**
-     * @param mixed $participants
-     */
-    public function setParticipants($participants): void
-    {
-        $this->participants = $participants;
-    }
+   
 
 
 }
