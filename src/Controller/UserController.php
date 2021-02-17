@@ -29,6 +29,8 @@ class UserController extends AbstractController
     public function inscription(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $participant = new Participant();
+        $participant -> setAdministrateur(false);
+        $participant -> setActif(true);
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
         $inscriptionForm ->handleRequest($request);
         if ($inscriptionForm -> isSubmitted() && $inscriptionForm->isValid())
@@ -42,4 +44,20 @@ class UserController extends AbstractController
 
         return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView() ]);
     }
+
+
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function login(): Response
+    {
+        return $this->render('user/connexion.html.twig');
+    }
+
+
+    /**
+     * Symfony gère entièrement cette route
+     * @Route("/logout", name="logout")
+     */
+    public function logout() {}
 }
