@@ -55,6 +55,7 @@ class UserController extends AbstractController
     }
 
 
+
     /**
      * Symfony gère entièrement cette route
      * @Route("/logout", name="logout")
