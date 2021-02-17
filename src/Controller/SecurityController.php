@@ -21,9 +21,9 @@ class SecurityController extends AbstractController
     public function login(): Response
 
     {
-        return $this->redirectToRoute('inscription');
-        if ($this->getUser())
 
+        if ($this->getUser())
+            return $this->redirectToRoute('accueil');
 
         return $this->render('user/connexion.html.twig');
     }
