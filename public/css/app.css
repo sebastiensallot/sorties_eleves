@@ -1,6 +1,8 @@
 body
 {
     background-color: black;
+    text-align: center;
+    flex-basis: auto;
 }
 
 .logo

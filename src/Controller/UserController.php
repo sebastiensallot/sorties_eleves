@@ -34,7 +34,10 @@ class UserController extends AbstractController
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
         $inscriptionForm ->handleRequest($request);
         if ($inscriptionForm -> isSubmitted() && $inscriptionForm->isValid())
+
         {
+            $password = $inscriptionForm->get('motDePasse')->getData();
+            $participant->setMotDePasse($encoder->encodePassword($participant, $password));
             $em->persist($participant);
             $em->flush();
 
@@ -46,19 +49,5 @@ class UserController extends AbstractController
     }
 
 
-    /**
-     * @Route("/connexion", name="connexion")
-     */
-    public function login(): Response
-    {
-        return $this->render('user/connexion.html.twig');
-    }
 
-
-
-    /**
-     * Symfony gère entièrement cette route
-     * @Route("/logout", name="logout")
-     */
-    public function logout() {}
 }
