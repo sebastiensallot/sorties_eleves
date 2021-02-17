@@ -35,6 +35,9 @@ class UserController extends AbstractController
         $inscriptionForm ->handleRequest($request);
         if ($inscriptionForm -> isSubmitted() && $inscriptionForm->isValid())
         {
+            $hashed = $encoder->encodePassword($participant, $participant->getMotDePasse());
+            $participant->setMotDePasse($hashed);
+
             $em->persist($participant);
             $em->flush();
 
