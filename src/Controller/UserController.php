@@ -48,6 +48,12 @@ class UserController extends AbstractController
         return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView() ]);
     }
 
-
-
+/**
+ * @Route("/profil", name="profil")
+ */
+    public function description (EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
+    {
+        return $this->render('user/Profil.html.twig');
+    }
 }
+
