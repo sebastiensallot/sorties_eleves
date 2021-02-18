@@ -1,0 +1,20 @@
+{% extends 'base.html.twig'%}
+{% block title %} espaceAbonnes {% endblock %}
+
+{% block main %}
+<h3>Filter les sorties</h3>
+
+    <p>  Participant :  {{ app.user.nom|upper}} &nbsp {{ app.user.prenom}}</p>
+<label type ="Campus">Campus</label><br>
+<select name="campus" id="campus"></select><br><br>
+    <label for="site-search">Le nom de la sortie contient:</label>
+    <button> <input type="search" placeholder="search" id="site-search" name="q"
+           aria-label="Search through site content">ok</button><br>
+    <label for="start">Entrée:</label>
+        <input type="date" id="start"name="trip-start"
+               value="datetime"min="2021-01-31" max="2022-01-31">
+    <label for="start">Et:</label>
+    <input type="date" id="start"name="trip-start"
+           value="datetime"min="2021-01-31" max="2022-01-31">
+
+{% endblock %}
