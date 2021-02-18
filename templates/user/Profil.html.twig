@@ -10,13 +10,13 @@
     </div>
 
     <div class="profil">
-<h1> Profil </h1>
+<h1>{{ app.user.pseudo}} </h1>
 
-<p>  Prénom : </p>
-<p>  Nom : </p>
-<p>  Télephone : </p>
-<p>  E-mail : </p>
-<p>  Campus : </p>
+<p>  Prénom :{{ app.user.prenom}} </p>
+<p>  Nom :{{ app.user.nom}} </p>
+<p>  Télephone :{{ app.user.telephone}} </p>
+<p>  E-mail : {{ app.user.email}}</p>
+<p>  Campus :{#app.user.campus#} </p>
 
 <input type="button" value="retour">
 

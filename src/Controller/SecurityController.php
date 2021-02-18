@@ -16,17 +16,18 @@ class SecurityController extends AbstractController
 {
 
     /**
-     * @Route("/connexion", name="connexion")
+     * @Route("/connexion", name="login")
      */
     public function login(): Response
 
     {
+         if ($this->getUser()) {
 
-        if ($this->getUser())
-            return $this->redirectToRoute('accueil');
+             return $this->redirectToRoute('accueil_connecter');
+         }
 
+             return $this->render('user/connexion.html.twig');
 
-        return $this->render('user/connexion.html.twig');
     }
 
 

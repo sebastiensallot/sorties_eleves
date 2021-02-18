@@ -8,21 +8,21 @@
         <h1>Connectez-vous !</h1>
 
         <label for="pseudo">Pseudo</label>
-        <input type="text" name="pseudo" id="pseudo" /><br/><br>
+        <input type="text" name="_username" id="pseudo"><br><br>
 
         <label for="motDePasse">Mot de Passe</label>
-        <input type="password" name="motDePasse" id="motDePasse" /> <br/><br>
+        <input type="password" name="_password" id="motDePasse"><br><br>
 
         <div id="connexion">
-            <a href="{{ path('accueil') }}">
+            <a href="{{ path('accueil_connecter') }}">
                 <input type="submit" class="btn btn-primary btn-lg" value="Connexion">
             </a>
 
             <div id="mdp_souvenir">
-                <input type="checkbox" name="souvenir" value="souvenir" id="souvenir"/>
-                <label for="souvenir" class="choicelabel"> Se souvenir de moi </label><br/><br>
+                <input type="checkbox" name="souvenir" value="souvenir" id="souvenir">
+                <label for="souvenir" class="choicelabel"> Se souvenir de moi </label><br><br>
 
-                <a href=""> Mot de passe oublié </a> <br/><br>
+                <a href=""> Mot de passe oublié </a> <br><br>
             </div>
 
         </div><br>

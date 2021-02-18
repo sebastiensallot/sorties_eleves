@@ -14,13 +14,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="accueil")
+     * @Route("/"), name="accueil")
      */
-    public function accueil(): Response
+    public function home(): Response
     {
         return $this->render('base.html.twig');
     }
-
 
 
     /**
@@ -44,7 +43,7 @@ class UserController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'L\'utilisateur a bien été enregistré !');
-            return $this->redirectToRoute('accueil', ['id'=> $participant->getId()]);
+            return $this->redirectToRoute('base.html.twig', ['id'=> $participant->getId()]);
         }
 
         return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView() ]);
