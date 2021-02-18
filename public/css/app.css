@@ -1,9 +1,44 @@
 body
 {
     background-color: black;
+    text-align: center;
+
+
 }
 
 .logo
 {
     text-align: center;
+}
+
+.test
+{
+    text-align: center;
+    width: 300px;
+    height: 150px;
+
+
+}
+
+.photo img
+{
+
+    width: 250px;
+    height: 250px;
+    margin-left: 25%;
+
+}
+
+.ensemble-block
+
+{
+    display: flex;
+    margin-top: 5%;
+}
+
+.profil
+{
+    position: absolute;
+    right: 50%;
+    text-decoration-line: underline;
 }

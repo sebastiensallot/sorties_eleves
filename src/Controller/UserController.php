@@ -34,7 +34,9 @@ class UserController extends AbstractController
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
         $inscriptionForm ->handleRequest($request);
         if ($inscriptionForm -> isSubmitted() && $inscriptionForm->isValid())
+
         {
+
             $hashed = $encoder->encodePassword($participant, $participant->getMotDePasse());
             $participant->setMotDePasse($hashed);
 
@@ -48,20 +50,12 @@ class UserController extends AbstractController
         return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView() ]);
     }
 
-
     /**
-     * @Route("/connexion", name="connexion")
-     */
-    public function login(): Response
+    * @Route("/profil", name="profil")
+    */
+    public function description(): Response
     {
-        return $this->render('user/connexion.html.twig');
+        return $this->render('user/Profil.html.twig');
     }
-
-
-
-    /**
-     * Symfony gère entièrement cette route
-     * @Route("/logout", name="logout")
-     */
-    public function logout() {}
 }
+
