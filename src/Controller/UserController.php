@@ -28,33 +28,42 @@ class UserController extends AbstractController
     public function inscription(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $participant = new Participant();
-        $participant -> setAdministrateur(false);
-        $participant -> setActif(true);
+        $participant->setAdministrateur(false);
+        $participant->setActif(true);
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
-        $inscriptionForm ->handleRequest($request);
-        if ($inscriptionForm -> isSubmitted() && $inscriptionForm->isValid())
 
+        $inscriptionForm->handleRequest($request);
+        if ($inscriptionForm->isSubmitted() && $inscriptionForm->isValid())
         {
-
-            $hashed = $encoder->encodePassword($participant, $participant->getMotDePasse());
-            $participant->setMotDePasse($hashed);
+            $password = $inscriptionForm->get('motDePasse')->getData();
+            $participant->setMotDePasse($encoder->encodePassword($participant, $password));
 
             $em->persist($participant);
             $em->flush();
 
             $this->addFlash('success', 'L\'utilisateur a bien été enregistré !');
-            return $this->redirectToRoute('base.html.twig', ['id'=> $participant->getId()]);
+
+            return $this->redirectToRoute('accueil', ['id' => $participant->getId()]);
         }
 
-        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView() ]);
+        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView()]);
     }
 
     /**
     * @Route("/profil", name="profil")
     */
     public function description(): Response
+
     {
         return $this->render('user/Profil.html.twig');
+    }
+
+    /**
+     * @Route("/espaceAbonnes", name="espaceAbonnes")
+     */
+    public function abonnes(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
+    {
+        return $this->render('user/espaceAbonnes.html.twig');
     }
 }
 
