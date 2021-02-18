@@ -44,3 +44,25 @@ body
     right: 50%;
 
 }
+table
+{   margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse
+}
+th,td
+{
+    border : 2px solid white;
+   border-color: #FFFFFF;
+}
+.identification
+{
+    text-align: right;
+}
+.campus
+{
+   text-align: left;
+}
+.checkbox
+{
+    text-align: right;
+}
