@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href ="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset("css/app.css") }}">
+
+    <title>{% block title %} App Sortir.com {% endblock %}</title>
+
+</head>
+<body>
+{% block header %}
+    <div class="logo">
+        <img src="{{ asset('img/images.png') }}"  alt="logo du site">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+
+        </div>
+    </nav>
+{% endblock %}
+
+{% block main %}{% endblock %}
+<h2>Bienvenue sur le site SORTIR.com </h2>
+<a href={{ path('inscription') }}>
+    <button class="btn btn-primary" type="submit"> S'inscrire </button>
+</a>
+<a href={{ path('login') }}>
+    <button class="btn btn-primary" type="submit"> Se connecter </button><br>
+</a>
+{% block footer %}{% endblock %}
+</body>
+</html>
