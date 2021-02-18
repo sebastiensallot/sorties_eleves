@@ -62,6 +62,27 @@ class Participant implements UserInterface
     private $actif;
 
     /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $roles=["ROLE_USER"];
+
+    /**
+     * @return string[]
+     */
+    public function getRoles(): array
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param string[] $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+    /**
      * @ORM\ManyToMany (targetEntity="App\Entity\Sortie", mappedBy="participants")
      */
     private $sorties;
@@ -182,10 +203,7 @@ class Participant implements UserInterface
         return $this;
     }
 
-    public function getRoles()
-    {
-        return ["ROLE_USER"];
-    }
+
 
     public function getPassword()
     {
@@ -196,7 +214,9 @@ class Participant implements UserInterface
     {
         return null;
     }
-
+    /**
+     * @return mixed
+     */
     public function getUsername()
     {
         return $this->pseudo;

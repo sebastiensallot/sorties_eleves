@@ -3,11 +3,17 @@
 {% block title %} Inscription {% endblock %}
 
 {% block main %}
+    <h2>Inscription</h2>
 <div class="test">
     {{ form_start(inscriptionForm) }}
     {{ form_widget(inscriptionForm) }}<br>
-
-    <button type="submit"> Enregister </button><br>
+    <label type ="Campus">Campus</label><br>
+    <select name="campus" id="campus"></select><br><br>
+    <input type="file" value="Télécharger ma photo !"class= "btn btn-primary"
+           src="{{ asset ('img/detective-avatar.jpg')}}">
+    <br><br>
+    <button type="submit"> Enregister </button>
+    <button type="submit"> Annuler </button><br>
     {{ form_end(inscriptionForm) }}<br><br>
 </div>
 {% endblock %}
