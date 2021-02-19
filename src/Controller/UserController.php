@@ -63,7 +63,13 @@ class UserController extends AbstractController
      */
     public function abonnes(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
     {
+
         return $this->render('user/espaceAbonnes.html.twig');
     }
+
+
+
+
+
 }
 
