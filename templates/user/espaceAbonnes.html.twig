@@ -1,106 +1,59 @@
-{% extends 'base.html.twig'%}
+{% extends 'base.html.twig' %}
 {% block title %} espaceAbonnes {% endblock %}
 
 {% block main %}
-
-<div class="identification">
-
-    <input type="date"value="dd-mm-yyyy">
-    <p>  Participant :  {{ app.user.nom|upper}} &nbsp {{ app.user.prenom}}</p>
-</div>
-    <div class="campus">
-        <h4>Filter les sorties</h4>
-<label type ="Campus">Campus</label><br>
-<select name="campus" id="campus"></select><br><br>
-
-    <label for="site-search">Le nom de la sortie contient:</label>
-    <button> <input type="search" placeholder="search" id="site-search" name="q"
-           aria-label="Search through site content">ok</button><br>
-
-    <label for="start">Entrée:</label>
-        <input type="date" id="start"name="trip-start"
-               value="datetime"min="2021-01-31" max="2022-01-31">
-    <label for="start">Et:</label>
-    <input type="date" id="start"name="trip-start"
-           value="datetime"min="2021-01-31" max="2022-01-31"><br>
+    <h3>Filter les sorties</h3>
+    <p class="date"> Date du jour : {{ "now" | date('d/m/y') }}</p>
+    <p class="date"> Participant : {{ app.user.nom | upper }} &nbsp {{ app.user.prenom }}</p>
+    <div class="recherche">
+        <button type="button" class="btn btn-primary btn-lg">Rechercher</button>
     </div>
-    <div class="checkbox"  >
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties dont je suis l'organisateur/trice
-    </label><br>
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties auxquelles je suis inscrit/e
-    </label><br>
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties auxquelles je ne suis pas inscrit/e
-    </label><br>
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties passées
-    </label><br><br>
-  </div>
+    <div class="campus">
 
-    <table>
+        <label for="pet-select">Campus</label>
 
-<tr>
-    <th>Nom de la sortie</th>
-    <th>Date de la sortie</th>
-    <th>Clôture</th>
-    <th>inscrits/places</th>
-    <th>Etat</th>
-    <th>Inscrit</th>
-    <th>Organisateur</th>
-    <th>Actions</th>
-</tr>
+        <select name="pets" id="pet-select">
+            <option value="">Nom de Campus :</option>
+        </select>
+        <br><br>
+    </div>
+    <div class="temps">
+        <label for="start">Entrée:</label>
+        <input type="date" id="start" name="trip-start"
+               value="date" min="2021-01-31" max="2022-01-31">
+        <label for="start">Et:</label>
+        <input type="date" id="start" name="trip-start"
+               value="date" min="2021-01-31" max="2022-01-31">
+    </div>
 
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <div class="select">
+        <div>
+            <input type="checkbox" id="scales" name="scales"
+                   checked>
+            <label for="scales">Sorties dont je suis l'organisateur/trice</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="horns" name="horns">
+            <label for="horns">Sorties auxquelles je suis inscrit/e</label>
+        </div>
+        <div>
+            <input type="checkbox" id="horns" name="horns">
+            <label for="horns">Sorties auxquelles je ne suis pas inscrit/e</label>
+        </div>
+        <div>
+            <input type="checkbox" id="horns" name="horns">
+            <label for="horns">Sorties passées</label>
+        </div>
+    </div>
 
 
-    </table><br><br>
-    <button type="submit"> Rechercher</button>
-    <button type="submit"> Créer une sortie</button><br>
+
+
+    <div class="creasortie">
+        <button type="button" class="btn btn-primary btn-lg">Créer une sortie</button>
+    </div>
+
 
 {% endblock %}

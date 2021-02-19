@@ -58,20 +58,21 @@ class Sortie
     private $participants;
 
     /**
-     * @return mixed
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="campus")
      */
-    public function getParticipants()
-    {
-        return $this->participants;
-    }
+    private $sortie_campus;
+
 
     /**
-     * @param mixed $participants
+     * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="etat")
      */
-    public function setParticipants($participants): void
-    {
-        $this->participants = $participants;
-    }
+    private $etats;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Lieu", mappedBy="sorties_lieux")
+     */
+    private $lieu_sorties;
 
 
 
@@ -187,7 +188,70 @@ class Sortie
         $this->etat = $etat;
     }
 
-   
+    /**
+     * @return mixed
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
+
+    /**
+     * @param mixed $participants
+     */
+    public function setParticipants($participants): void
+    {
+        $this->participants = $participants;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSortieCampus()
+    {
+        return $this->sortie_campus;
+    }
+
+    /**
+     * @param mixed $sortie_campus
+     */
+    public function setSortieCampus($sortie_campus): void
+    {
+        $this->sortie_campus = $sortie_campus;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEtats()
+    {
+        return $this->etats;
+    }
+
+    /**
+     * @param mixed $etats
+     */
+    public function setEtats($etats): void
+    {
+        $this->etats = $etats;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLieuSorties()
+    {
+        return $this->lieu_sorties;
+    }
+
+    /**
+     * @param mixed $lieu_sorties
+     */
+    public function setLieuSorties($lieu_sorties): void
+    {
+        $this->lieu_sorties = $lieu_sorties;
+    }
+
 
 
 }

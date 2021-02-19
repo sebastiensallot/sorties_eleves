@@ -92,6 +92,13 @@ class Participant implements UserInterface
         $this->sorties = new ArrayCollection();
     }
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="campus")
+     */
+    private $participants_campus;
+
+
+
 
 
 
@@ -238,6 +245,22 @@ class Participant implements UserInterface
     public function setSorties(ArrayCollection $sorties): void
     {
         $this->sorties = $sorties;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipantsCampus()
+    {
+        return $this->participants_campus;
+    }
+
+    /**
+     * @param mixed $participants_campus
+     */
+    public function setParticipantsCampus($participants_campus): void
+    {
+        $this->participants_campus = $participants_campus;
     }
 
 

@@ -1,0 +1,32 @@
+{% extends 'user/espaceAbonnes.html.twig' %}
+
+{% block title %}
+   {{ sortie.nom }}
+{% endblock %}
+
+{% block main %}
+
+
+      <div class="affichage_sortie">
+
+         <p>  Nom de la sortie :{{ sortie.nom }} </p>
+         <p>  Date et Heure de la sortie :{{ sortie.dateHeureDebut }} </p>
+         <p>  Date limite d'inscription :{{ sortie.dateLimiteInscription }} </p>
+         <p>  Nombre de places : {{ sortie.nbInscriptionsMax }}</p>
+         <p>  Durée : {{ sortie.duree }} minutes </p>
+         <p>  Description et infos : {{ sortie.infosSortie }} </p>
+         <p>  Campus : {{ sortie.sortie_campus }} </p>
+         <p>  Lieu : {{ sortie.lieu_sorties }} </p>
+         <p>  Rue : {{ sortie.lieu.rue }} </p>
+         <p>  Code Postal : {{ sortie.ville.codePostal }} </p>
+
+         <p> Liste des participants inscrits :</p>
+
+         <p>{{ app.user.pseudo}} </p>
+         <p>{{ app.user.nom}} </p>
+
+
+      </div>
+
+{% endblock %}
+

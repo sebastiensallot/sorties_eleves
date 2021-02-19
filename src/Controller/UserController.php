@@ -18,7 +18,7 @@ class UserController extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('base.html.twig');
+        return $this->render('user/home.html.twig');
     }
 
 
