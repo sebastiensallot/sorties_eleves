@@ -41,9 +41,8 @@ class UserController extends AbstractController
             $em->persist($participant);
             $em->flush();
 
-            $this->addFlash('success', 'L\'utilisateur a bien été enregistré !');
 
-            return $this->redirectToRoute('accueil', ['id' => $participant->getId()]);
+            return $this->redirectToRoute('user/home.html.twig', ['id' => $participant->getId()]);
         }
 
         return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView()]);

@@ -2,7 +2,7 @@
 {% block title %} espaceAbonnes {% endblock %}
 
 {% block main %}
-    <h3>Filter les sorties</h3>
+
     <p class="date"> Date du jour : {{ "now" | date('d/m/y') }}</p>
     <p class="date"> Participant : {{ app.user.nom | upper }} &nbsp {{ app.user.prenom }}</p>
     <div class="recherche">
@@ -10,6 +10,7 @@
     </div>
     <div class="campus">
 
+        <h3>Filtrer les sorties</h3>
         <label for="pet-select">Campus</label>
 
         <select name="pets" id="pet-select">
@@ -52,7 +53,9 @@
 
 
     <div class="creasortie">
+        <a href="{{path('creer_sortie') }}">
         <button type="button" class="btn btn-primary btn-lg">Créer une sortie</button>
+        </a>
     </div>
 
 

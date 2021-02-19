@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Sortie;
 use App\Form\EspaceAbonnesType;
+use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,9 +38,10 @@ class SortieController extends AbstractController
     /**
      * @Route("/afficher_sortie/{id}", name="afficher_sortie")
      */
-    public function afficher_sortie()
+    public function view($id, SortieRepository $sortieRepository): Response
     {
-        return $this->render('sortie/afficher.html.twig');
+        $sortie = $sortieRepository->find($id);
+        return $this->render('sortie/afficher.html.twig', ['sortie' => $sortie ]);
     }
 
 
