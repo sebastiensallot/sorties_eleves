@@ -61,7 +61,7 @@ class UserController extends AbstractController
     /**
      * @Route("/espaceAbonnes", name="espaceAbonnes")
      */
-    public function abonnes(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
+    public function abonnes(): Response
     {
 
         return $this->render('user/espaceAbonnes.html.twig');
