@@ -29,7 +29,7 @@ class Lieu
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Sortie", inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sortie", inversedBy="lieu_sorties")
      */
     private $sorties_lieux;
 

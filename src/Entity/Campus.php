@@ -23,7 +23,7 @@ class Campus
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Participant", mappedBy="participants")
+     * @ORM\OneToMany(targetEntity="App\Entity\Participant", mappedBy="participants_campus")
      */
     private $campus;
 

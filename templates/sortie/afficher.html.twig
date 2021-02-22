@@ -11,7 +11,7 @@
          <p>  Date et Heure de la sortie : {{ sortie.dateHeureDebut | date("Y-m-d H:i") }} </p>
          <p>  Date limite d'inscription : {{ sortie.dateLimiteInscription | date("Y-m-d H:i") }} </p>
          <p>  Nombre de places : {{ sortie.nbInscriptionsMax }}</p>
-         <p>  Durée : {{ sortie.duree | date("H:i:s") }} minutes </p>
+         <p>  Durée : {{ sortie.duree | date("H:i") }} minutes </p>
          <p>  Description et infos : {{ sortie.infosSortie }} </p>
 
       </div>
@@ -23,10 +23,16 @@
    <table>
         <tr>
             <th> Pseudo </th>
-                <td>{{ app.user.pseudo }}</td>
             <th> Nom </th>
-                <td>{{ app.user.nom }} {{ app.user.prenom }}</td>
         </tr>
+
+    {% for participant in sortie.participants %}
+       <tr>
+            <td>{{ app.user.pseudo }}</td>
+            <td>{{ app.user.nom }} {{ app.user.prenom }}</td>
+       </tr>
+    {% endfor %}
+
     </table>
 
 

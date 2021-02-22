@@ -64,7 +64,7 @@ class Sortie
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="etat")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Etat", inversedBy="sorties")
      */
     private $etats;
 
