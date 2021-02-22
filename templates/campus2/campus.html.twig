@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %} espaceAbonnes {% endblock %}
+
+{% block main %}
+
+    <h2>Ajoutez un campus</h2>
+    <div class="campus">
+        {{ form_start(campusForm) }}
+        {{ form_widget(campusForm) }}<br>
+
+
+    <table>
+        <button type="submit">Ajouter</button>
+        <tr>
+<th>
+    {% for campus in campus %}
+
+
+
+    {%  endfor %}
+
+</th>
+        </tr>
+
+    </table>
+
+    <p>Le nom contient :</p>
+    <input type="search" >
+
+    <button type="submit">Rechercher</button>
+
+
+
+        {{ form_end(campusForm) }}<br><br>
+
+
+{% endblock %}
