@@ -14,7 +14,6 @@ security:
                 check_path: login
                 default_target_path: espaceAbonnes
 
-
             #logout_on_user_change: true
             logout:
                 path: logout
