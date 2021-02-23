@@ -1,0 +1,36 @@
+{% extends 'user/espaceAbonnes.html.twig' %}
+
+{% block title %} Gérer les campus {% endblock %}
+
+{% block main %}
+
+    <h2>Gérer les campus</h2><br><br>
+
+
+    <p>Le nom contient :</p>
+    <input type="search">
+
+    <button class="btn btn-primary" type="submit">Rechercher</button><br><br>
+
+<table>
+
+    <tr>
+        <th>Campus</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for campus in campusList %}
+    <tr>
+        <td>{{ campus.nom }}</td>
+
+        <td>
+            <button class="btn btn-primary" type="submit">Modifier</button>
+            <button class="btn btn-primary" type="submit">Supprimer</button>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}

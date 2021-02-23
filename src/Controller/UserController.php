@@ -6,6 +6,7 @@ use App\Entity\Campus;
 use App\Entity\Participant;
 use App\Form\CampusType;
 use App\Form\InscriptionType;
+use App\Repository\CampusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +17,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/"), name="accueil")
+     * @Route("/"), name="home")
      */
-    public function home(): Response
+    public function home()
     {
         return $this->render('user/home.html.twig');
     }
@@ -30,7 +31,7 @@ class UserController extends AbstractController
     public function inscription(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $participant = new Participant();
-        $participant->setAdministrateur(false);
+        $participant->setAdministrateur(true);
         $participant->setActif(true);
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
 
@@ -44,7 +45,7 @@ class UserController extends AbstractController
             $em->flush();
 
 
-            return $this->redirectToRoute('user/home.html.twig', ['id' => $participant->getId()]);
+            return $this->redirectToRoute('app_user_home', ['id' => $participant->getId()]);
         }
 
         return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView()]);
@@ -65,7 +66,10 @@ class UserController extends AbstractController
     public function abonnes(): Response
     {
 
-        return $this->render('user/espaceAbonnes.html.twig');
+        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
+        $campusList= $campusRepo->findAll();
+
+        return $this->render('user/espaceAbonnes.html.twig', ['campusList' => $campusList]);
     }
 
 

@@ -64,23 +64,8 @@ class Participant implements UserInterface
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    private $roles=["ROLE_USER"];
+    private $roles = ["ROLE_ADMIN"];
 
-    /**
-     * @return string[]
-     */
-    public function getRoles(): array
-    {
-        return $this->roles;
-    }
-
-    /**
-     * @param string[] $roles
-     */
-    public function setRoles(array $roles): void
-    {
-        $this->roles = $roles;
-    }
 
     /**
      * @ORM\ManyToMany (targetEntity="App\Entity\Sortie", mappedBy="participants")
@@ -230,6 +215,23 @@ class Participant implements UserInterface
     }
 
     public function eraseCredentials() {}
+
+    /**
+     * @return string[]
+     */
+    public function getRoles(): array
+    {
+       return $this->roles;
+    }
+
+    /**
+     * @param string[] $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
 
     /**
      * @return ArrayCollection

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CampusRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +32,7 @@ class Campus
      * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="sorties")
      */
     private $campus_sortie;
+
 
 
 
@@ -83,7 +85,6 @@ class Campus
     {
         $this->campus_sortie = $campus_sortie;
     }
-
 
 
 }

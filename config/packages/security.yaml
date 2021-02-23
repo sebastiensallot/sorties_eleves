@@ -18,10 +18,11 @@ security:
             #logout_on_user_change: true
             logout:
                 path: logout
-                target: login
+                target: home
     encoders:
         App\Entity\Participant:
             algorithm: bcrypt
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }

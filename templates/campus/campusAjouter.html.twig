@@ -1,0 +1,17 @@
+{% extends 'user/espaceAbonnes.html.twig' %}
+
+{% block title %} Gérer les campus {% endblock %}
+
+{% block main %}
+
+    <h2>Ajouter un campus</h2>
+    <div class="campus">
+        {{ form_start(campusForm) }}
+        {{ form_widget(campusForm) }}
+
+        <button class="btn btn-primary" type="submit">Ajouter</button>
+
+        {{ form_end(campusForm) }}<br><br>
+
+
+{% endblock %}

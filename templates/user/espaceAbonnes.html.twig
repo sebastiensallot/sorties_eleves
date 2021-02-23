@@ -11,13 +11,18 @@
     <div class="campus">
 
         <h3>Filtrer les sorties</h3>
-        <label for="pet-select">Campus</label>
 
-        <select name="pets" id="pet-select">
-            <option value="">Nom de Campus :</option>
+        <label for="campus_name">Campus</label>
+
+        <select name="campus_liste" id="campus_liste">
+            <option style="display:none">
+            {% for campus in campusList %}
+                <option>{{ campus.nom }}</option>
+            {% endfor %}
         </select>
         <br><br>
     </div>
+
     <div class="temps">
         <label for="start">Entrée:</label>
         <input type="date" id="start" name="trip-start"
@@ -30,22 +35,22 @@
 
     <div class="select">
         <div>
-            <input type="checkbox" id="scales" name="scales"
+            <input type="checkbox" id="sortie_org" name="sortie_org"
                    checked>
-            <label for="scales">Sorties dont je suis l'organisateur/trice</label>
+            <label for="sortie_org">Sorties dont je suis l'organisateur/trice</label>
         </div>
 
         <div>
-            <input type="checkbox" id="horns" name="horns">
-            <label for="horns">Sorties auxquelles je suis inscrit/e</label>
+            <input type="checkbox" id="sortie_inscrits" name="sortie_inscrits">
+            <label for="sortie_inscrits">Sorties auxquelles je suis inscrit/e</label>
         </div>
         <div>
-            <input type="checkbox" id="horns" name="horns">
-            <label for="horns">Sorties auxquelles je ne suis pas inscrit/e</label>
+            <input type="checkbox" id="sortie_pas_inscrits" name="sortie_pas_inscrits">
+            <label for="sortie_pas_inscrits">Sorties auxquelles je ne suis pas inscrit/e</label>
         </div>
         <div>
-            <input type="checkbox" id="horns" name="horns">
-            <label for="horns">Sorties passées</label>
+            <input type="checkbox" id="sortie_passées" name="sortie_passées">
+            <label for="sortie_passées">Sorties passées</label>
         </div>
     </div>
 
