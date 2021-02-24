@@ -24,13 +24,20 @@
         <td>{{ campus.nom }}</td>
 
         <td>
-            <button class="btn btn-primary" type="submit">Modifier</button>
-            <button class="btn btn-primary" type="submit">Supprimer</button>
+            <a href="{{ path('campus_update', {'id': campus.id}) }}">
+                <button class="btn btn-primary" type="submit">Modifier</button>
+            </a>
+            <a href="{{ path('campus_delete', {'id': campus.id}) }}">
+                <button class="btn btn-primary" type="submit">Supprimer</button>
+            </a>
         </td>
     </tr>
     {% endfor %}
 
+</table><br>
 
-</table>
+    <a href="{{ path('campus_add') }}">
+        <button class="btn btn-primary" type="submit">Ajouter un campus</button>
+    </a>
 
 {% endblock %}

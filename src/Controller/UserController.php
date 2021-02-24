@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Campus;
 use App\Entity\Participant;
-use App\Form\CampusType;
 use App\Form\InscriptionType;
 use App\Repository\CampusRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,8 +29,10 @@ class UserController extends AbstractController
      */
     public function inscription(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
     {
+        //@todo: créer un participant
+
         $participant = new Participant();
-        $participant->setAdministrateur(true);
+        $participant->setAdministrateur(false);
         $participant->setActif(true);
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
 
@@ -48,8 +49,15 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_user_home', ['id' => $participant->getId()]);
         }
 
-        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView()]);
+        //@todo: liste des campus
+
+        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
+        $campusList= $campusRepo->findAll();
+
+        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView(), 'campusList' => $campusList]);
     }
+
+
 
     /**
     * @Route("/profil", name="profil")
@@ -59,6 +67,8 @@ class UserController extends AbstractController
     {
         return $this->render('user/Profil.html.twig');
     }
+
+
 
     /**
      * @Route("/espaceAbonnes", name="espaceAbonnes")

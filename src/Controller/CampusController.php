@@ -29,7 +29,7 @@ class CampusController extends AbstractController
         $this->denyAccessUnlessGranted("ROLE_ADMIN");
         if(!$this->isGranted("ROLE_ADMIN"))
         {
-            throw  new AccessDeniedException("Vous n'avez pas le droit");
+            throw  new AccessDeniedException("Accès refusé");
         }
 
         //@todo: liste des campus
@@ -55,7 +55,7 @@ class CampusController extends AbstractController
         $this->denyAccessUnlessGranted("ROLE_ADMIN");
         if(!$this->isGranted("ROLE_ADMIN"))
         {
-            throw new AccessDeniedException("Vous n'avez pas le droit");
+            throw new AccessDeniedException("Accès refusé");
         }
 
         //@todo: créer un campus
@@ -68,9 +68,12 @@ class CampusController extends AbstractController
         {
             $em->persist($campus);
             $em->flush();
+
+            $this->addFlash("success", "Ajout réussi");
+
+            return $this->redirectToRoute('campus_list');
         }
 
-        $this->addFlash("success", "Ajout réussi");
         return $this->render('campus/campusAjouter.html.twig', [ 'campusForm' => $campusForm->createView()]);
     }
 
@@ -88,13 +91,13 @@ class CampusController extends AbstractController
         $this->denyAccessUnlessGranted("ROLE_ADMIN");
         if(!$this->isGranted("ROLE_ADMIN"))
         {
-            throw new AccessDeniedException("Vous n'avez pas le droit");
+            throw new AccessDeniedException("Accès refusé");
         }
 
         //@todo: modifier un campus
 
         $campus = $repository->find($id);
-        $campusForm= $this->createForm(CampusType::class,$campus);
+        $campusForm= $this->createForm(CampusType::class, $campus);
         $campusForm->handleRequest($request);
         if($campusForm->isSubmitted() && $campusForm->isValid())
         {
@@ -102,9 +105,9 @@ class CampusController extends AbstractController
             $entityManager->flush();
             $this->addFlash("success", "Modification réussie");
 
-            return $this->redirectToRoute('campus_list', []);
+            return $this->redirectToRoute('campus_list');
         }
-        return $this->render('campus/campusAjouter.html.twig', ['campusForm'=> $campusForm->createView()]);
+        return $this->render('campus/campusModifier.html.twig', ['campusForm'=> $campusForm->createView()]);
 
 
     }
@@ -113,7 +116,7 @@ class CampusController extends AbstractController
 
 
     /**
-     * @Route("/campus/delete/{id}", name="campus_delete",  requirements={"id": "\d+"},methods={"GET"})
+     * @Route("/campus/delete/{id}", name="campus_delete", requirements={"id": "\d+"}, methods={"GET"})
      */
     public function campusSupprimer($id, EntityManagerInterface $entityManager, CampusRepository $repository):Response
     {
@@ -122,7 +125,7 @@ class CampusController extends AbstractController
         $this->denyAccessUnlessGranted("ROLE_ADMIN");
         if(!$this->isGranted("ROLE_ADMIN"))
         {
-            throw new AccessDeniedException("Vous n'avez pas le droit");
+            throw new AccessDeniedException("Accès refusé");
         }
 
         //@todo: récupérer l'id du campus

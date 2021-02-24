@@ -35,9 +35,9 @@ class Lieu
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Sortie", inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ville", inversedBy="lieux_ville")
      */
-    private $lieu_villes;
+    private $ville_lieux;
 
 
 
@@ -94,18 +94,20 @@ class Lieu
     /**
      * @return mixed
      */
-    public function getLieuVilles()
+    public function getVilleLieux()
     {
-        return $this->lieu_villes;
+        return $this->ville_lieux;
     }
 
     /**
-     * @param mixed $lieu_villes
+     * @param mixed $ville_lieux
      */
-    public function setLieuVilles($lieu_villes): void
+    public function setVilleLieux($ville_lieux): void
     {
-        $this->lieu_villes = $lieu_villes;
+        $this->ville_lieux = $ville_lieux;
     }
+
+
 
 
 }

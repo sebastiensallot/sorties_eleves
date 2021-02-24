@@ -1,0 +1,16 @@
+{% extends 'user/espaceAbonnes.html.twig' %}
+
+{% block title %} Gérer les villes {% endblock %}
+
+{% block main %}
+
+    <h2>Modifier une ville</h2>
+    <div class="ville">
+    {{ form_start(villeForm) }}
+    {{ form_widget(villeForm) }}
+
+    <button class="btn btn-primary" type="submit">Enregistrer</button>
+
+    {{ form_end(villeForm) }}<br><br>
+
+{% endblock %}

@@ -64,7 +64,7 @@ class Participant implements UserInterface
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    private $roles = ["ROLE_ADMIN"];
+    private $roles = ["ROLE_USER"];
 
 
     /**

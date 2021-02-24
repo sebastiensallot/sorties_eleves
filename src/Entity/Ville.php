@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\VilleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VilleRepository::class)
@@ -23,15 +24,16 @@ class Ville
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=5, maxMessage="5 chiffres maximum !")
+     * @ORM\Column(type="string", length=5)
      */
     private $codePostal;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Lieu", mappedBy="lieu_villes")
+     * @ORM\OneToMany(targetEntity="App\Entity\Lieu", mappedBy="ville_lieux")
      */
-    private $lieu_ville;
+    private $lieux_ville;
 
 
 
@@ -70,17 +72,17 @@ class Ville
     /**
      * @return mixed
      */
-    public function getLieuVille()
+    public function getLieuxVille()
     {
-        return $this->lieu_ville;
+        return $this->lieux_ville;
     }
 
     /**
-     * @param mixed $lieu_ville
+     * @param mixed $lieux_ville
      */
-    public function setLieuVille($lieu_ville): void
+    public function setLieuxVille($lieux_ville): void
     {
-        $this->lieu_ville = $lieu_ville;
+        $this->lieux_ville = $lieux_ville;
     }
 
 

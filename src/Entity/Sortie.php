@@ -58,7 +58,7 @@ class Sortie
     private $participants;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="campus")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="campus_sortie")
      */
     private $sortie_campus;
 

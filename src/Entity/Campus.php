@@ -29,7 +29,7 @@ class Campus
     private $campus;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="sorties")
+     * @ORM\OneToMany(targetEntity="App\Entity\Sortie", mappedBy="sortie_campus")
      */
     private $campus_sortie;
 
