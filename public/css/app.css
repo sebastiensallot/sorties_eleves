@@ -5,116 +5,42 @@
 
 body
 {
-    background-color: black;
     text-align: center;
-    font-family: Anton;
+    font-family: Verdana;
 }
 
 .logo
 {
     text-align: center;
-    font-family: Anton;
 }
 
-.inscription
+
+table
 {
-    margin: auto;
-    text-align: center;
-    width: 300px;
-    height: 150px;
-    font-family: Anton;
+    border-collapse: collapse;
 }
 
-.photo img
+th, td
+{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.container
 {
 
+    padding-right: 5%;
+    padding-left: 5%;
+    margin-top: 10px;
+}
+
+.photo
+{
     width: 250px;
     height: 250px;
     margin-left: 25%;
-
 }
 
-.ensemble-block
-
-{
-    display: flex;
-    margin-top: 5%;
-}
-
-.profil
-{
-    position: absolute;
-    right: 50%;
-    font-family: Anton;
-
-}
-table
-{   margin-right: auto;
-    margin-left: auto;
-    border-collapse: collapse
-}
-th,td
-{
-    border: 2px solid white;
-    border-color: #FFFFFF;
-}
-
-.identification
-{
-    text-align: right;
-}
-
-.campus
-{
-    color: white;
-    font-size: large;
-}
-
-.temps
-
-{
-    color: white;
-}
-
-.checkbox
-{
-    text-align: right;
-}
-
-.date
-{
-    text-align: right;
-    font-family: Anton;
-    color: white;
-    font-size: large;
-}
-
-.recherche
-
-{
-    font-family: Anton;
-    text-align: right;
-}
-
-.creasortie
-
-{
-    text-align: left;
-}
-
-.select
-{
-    font-family: Anton;
-    text-align: right;
-    color: white;
-    justify-items: left;
-}
-
-.list
-{
-    font-size: .9rem;
-    padding: 2px 5px;
-}
 
 .flash
 {

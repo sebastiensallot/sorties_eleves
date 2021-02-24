@@ -29,6 +29,8 @@ class SortieController extends AbstractController
             $em->persist($sortie);
             $em->flush();
 
+            return $this->redirectToRoute('espaceAbonnes');
+
         }
 
         return $this->render('sortie/formul_sortie.html.twig', ['sortieForm' => $sortieForm->createView()]);

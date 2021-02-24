@@ -70,19 +70,5 @@ class UserController extends AbstractController
 
 
 
-    /**
-     * @Route("/espaceAbonnes", name="espaceAbonnes")
-     */
-    public function abonnes(): Response
-    {
-
-        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
-        $campusList= $campusRepo->findAll();
-
-        return $this->render('user/espaceAbonnes.html.twig', ['campusList' => $campusList]);
-    }
-
-
-
 }
 

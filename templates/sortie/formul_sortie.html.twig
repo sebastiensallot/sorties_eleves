@@ -10,8 +10,11 @@
         {{ form_widget(sortieForm) }}<br>
 
         <button class= "btn btn-primary" type="submit"> Enregister </button>
+        <a href="{{ path('listSorties') }}">
         <button class= "btn btn-primary" type="submit"> Publier une sortie </button>
+        </a>
         <button class= "btn btn-primary" type="submit"> Annuler </button><br>
+
 
         {{ form_end(sortieForm) }}<br><br>
     </div>
