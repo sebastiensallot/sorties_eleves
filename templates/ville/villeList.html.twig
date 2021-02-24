@@ -12,34 +12,36 @@
 
     <button class="btn btn-primary" type="submit">Rechercher</button><br><br>
 
-    <table>
+    <div class="villesList">
+        <table>
 
-        <tr>
-            <th>Ville</th>
-            <th>Code Postal</th>
-            <th>Actions</th>
-        </tr>
-
-        {% for ville in villeList %}
             <tr>
-                <td>{{ ville.nom }}</td>
-                <td>{{ ville.codePostal }}</td>
-
-                <td>
-                    <a href="{{ path('ville_update', {'id': ville.id}) }}">
-                    <button class="btn btn-primary" type="submit">Modifier</button>
-                    </a>
-                    <a href="{{ path('ville_delete', {'id': ville.id}) }}">
-                    <button class="btn btn-primary" type="submit">Supprimer</button>
-                    </a>
-                </td>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Actions</th>
             </tr>
-        {% endfor %}
 
-    </table><br>
+            {% for ville in villeList %}
+                <tr>
+                    <td>{{ ville.nom }}</td>
+                    <td>{{ ville.codePostal }}</td>
 
-    <a href="{{ path('ville_add') }}">
-        <button class="btn btn-primary" type="submit">Ajouter une ville</button>
-    </a>
+                    <td>
+                        <a href="{{ path('ville_update', {'id': ville.id}) }}">
+                        <button class="btn btn-primary" type="submit">Modifier</button>
+                        </a>
+                        <a href="{{ path('ville_delete', {'id': ville.id}) }}">
+                        <button class="btn btn-primary" type="submit">Supprimer</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table><br>
+
+        <a href="{{ path('ville_add') }}">
+            <button class="btn btn-primary" type="submit">Ajouter une ville</button>
+        </a><br>
+    </div>
 
 {% endblock %}

@@ -4,17 +4,16 @@
 
 {%  block main %}
 
-    <div class="photo" >
-    <img src="{{ asset ('img/detective-avatar.jpg')}}">
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-
+    <div class="col-md-2">
+        <div class="photo">
+            <img width="250px" height="200px" src="{{ asset ('img/detective-avatar.jpg')}}">
         </div>
+    </div>
 
-        <div class="col-lg-8">
-            <div class="profil">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="profil">
                         <h1>{{ app.user.pseudo}} </h1>
 
                         <p>  Prénom :{{ app.user.prenom}} </p>
@@ -23,7 +22,10 @@
                         <p>  E-mail : {{ app.user.email}}</p>
                         <p>  Campus :{#app.user.campus#} </p>
 
+                    <a href="{{ path('listSorties') }}">
                         <input type="button" class= "btn btn-primary" value="Retour">
+                    </a>
+                </div>
             </div>
         </div>
     </div>

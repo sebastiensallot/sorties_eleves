@@ -6,14 +6,13 @@
 body
 {
     text-align: center;
-    font-family: Verdana;
+    font-family: Verdana, sans-serif;
 }
 
 .logo
 {
     text-align: center;
 }
-
 
 table
 {
@@ -22,25 +21,34 @@ table
 
 th, td
 {
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 10px;
 }
 
 .container
 {
-
     padding-right: 5%;
     padding-left: 5%;
-    margin-top: 10px;
 }
 
 .photo
 {
-    width: 250px;
-    height: 250px;
+    margin-top: 15%;
     margin-left: 25%;
 }
 
+
+.campusList
+{
+    position: absolute;
+    right: 40%;
+}
+
+.villesList
+{
+    position: absolute;
+    right: 37%;
+}
 
 .flash
 {
