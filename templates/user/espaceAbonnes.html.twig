@@ -1,67 +1,131 @@
-{% extends 'base.html.twig' %}
-{% block title %} espaceAbonnes {% endblock %}
+        {% extends 'base.html.twig' %}
+        {% block title %} espaceAbonnes {% endblock %}
 
-{% block main %}
-
-    <p class="date"> Date du jour : {{ "now" | date('d/m/y') }}</p>
-    <p class="date"> Participant : {{ app.user.nom | upper }} &nbsp {{ app.user.prenom }}</p>
-    <div class="recherche">
-        <button type="button" class="btn btn-primary btn-lg">Rechercher</button>
-    </div>
-    <div class="campus">
-
-        <h3>Filtrer les sorties</h3>
-
-        <label for="campus_name">Campus</label>
-
-        <select name="campus_liste" id="campus_liste">
-            <option style="display:none">
-            {% for campus in campusList %}
-                <option>{{ campus.nom }}</option>
-            {% endfor %}
-        </select>
-        <br><br>
-    </div>
-
-    <div class="temps">
-        <label for="start">Entrée:</label>
-        <input type="date" id="start" name="trip-start"
-               value="date" min="2021-01-31" max="2022-01-31">
-        <label for="start">Et:</label>
-        <input type="date" id="start" name="trip-start"
-               value="date" min="2021-01-31" max="2022-01-31">
-    </div>
+        {% block main %}
 
 
-    <div class="select">
-        <div>
-            <input type="checkbox" id="sortie_org" name="sortie_org"
-                   checked>
-            <label for="sortie_org">Sorties dont je suis l'organisateur/trice</label>
+            <!-- date + nom -->
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-8"></div>
+                    <div class="col-md-4">
+                    <p class="date"> Date du jour : {{ "now" | date('d/m/y') }}</p>
+                    <p class="date"> Participant : {{ app.user.nom | upper }} &nbsp {{ app.user.prenom }}</p>
+                    </div>
+            </div>
+
+
+            <!-- filtre + date -->
+        <div class="row">
+                <div class="col-xl-4">
+                    <div class="campus">
+
+                        <h3>Filtrer les sorties</h3>
+
+                        <label for="campus_name">Campus</label>
+
+                        <select name="campus_liste" id="campus_liste">
+
+                         <option style="display:none">
+
+                            {% for campus in campusList %}
+                         <option>{{ campus.nom }}</option>
+                        {% endfor %}
+
+                    </select>
+                    </div>
+
+
+                         <div class="temps">
+                            <label for="start">Du:</label>
+                             <input type="date" id="start" name="trip-start"
+                           value="date" min="2021-01-31" max="2022-01-31">
+                             <label for="start">Au:</label>
+                             <input type="date" id="start" name="trip-start"
+                                    value="date" min="2021-01-31" max="2022-01-31">
+                         </div>
+                </div>
+
+
+
+
+                <div class="col-md-4">
+                     <div class="select">
+                         <div>
+                                    <input type="checkbox" id="sortie_org" name="sortie_org"
+                                        checked>
+                                    <label for="sortie_org">Sorties dont je suis l'organisateur/trice</label>
+                         </div>
+
+                        <div>
+                                 <input type="checkbox" id="sortie_inscrits" name="sortie_inscrits">
+                                  <label for="sortie_inscrits">Sorties auxquelles je suis inscrit/e</label>
+                         </div>
+
+                         <div>
+                        <input type="checkbox" id="sortie_pas_inscrits" name="sortie_pas_inscrits">
+                        <label for="sortie_pas_inscrits">Sorties auxquelles je ne suis pas inscrit/e</label>
+                        </div>
+
+                        <div>
+                        <input type="checkbox" id="sortie_passées" name="sortie_passées">
+                        <label for="sortie_passées">Sorties passées</label>
+                         </div>
+                     </div>
+                </div>
+
+
+                <div class="col-md-4">
+                     <div class="recherche">
+                             <button type="button" class="btn btn-primary btn-lg">Rechercher</button>
+                     </div>
+                </div>
         </div>
 
-        <div>
-            <input type="checkbox" id="sortie_inscrits" name="sortie_inscrits">
-            <label for="sortie_inscrits">Sorties auxquelles je suis inscrit/e</label>
-        </div>
-        <div>
-            <input type="checkbox" id="sortie_pas_inscrits" name="sortie_pas_inscrits">
-            <label for="sortie_pas_inscrits">Sorties auxquelles je ne suis pas inscrit/e</label>
-        </div>
-        <div>
-            <input type="checkbox" id="sortie_passées" name="sortie_passées">
-            <label for="sortie_passées">Sorties passées</label>
-        </div>
-    </div>
+            <!-- Tableau -->
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <table>
+                        <tr>
+                            <th>Nom de la sortie </th>
+                            <td>  </td>
+
+                            <th>Date de la sortie</th>
+                            <td> </td>
+
+                            <th>Date limite d'inscription</th>
+                            <td>  </td>
+
+                            <th>Durée</th>
+                            <td>  </td>
+
+                            <th>Inscrits</th>
+
+                            <th>Etat</th>
+                            <td>  </td>
+
+                            <th>Inscrit</th>
+                            <td>  </td>
+
+                            <th>Organisateur</th>
+
+                            <th>Actions</th>
+
+                        </tr>
 
 
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
 
+                        <a href="{{path('creer_sortie') }}">
+                                 <button type="button" class="btn btn-primary btn-lg">Créer une sortie</button>
+                         </a>
 
-    <div class="creasortie">
-        <a href="{{path('creer_sortie') }}">
-        <button type="button" class="btn btn-primary btn-lg">Créer une sortie</button>
-        </a>
-    </div>
-
-
-{% endblock %}
+                 </div>
+            </div>
+            </div>
+        {% endblock %}

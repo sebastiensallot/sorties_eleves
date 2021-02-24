@@ -4,23 +4,28 @@
 
 {%  block main %}
 
-    <div class="ensemble-block">
     <div class="photo" >
     <img src="{{ asset ('img/detective-avatar.jpg')}}">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+
+        <div class="col-lg-8">
+            <div class="profil">
+                        <h1>{{ app.user.pseudo}} </h1>
+
+                        <p>  Prénom :{{ app.user.prenom}} </p>
+                        <p>  Nom :{{ app.user.nom}} </p>
+                        <p>  Télephone :{{ app.user.telephone}} </p>
+                        <p>  E-mail : {{ app.user.email}}</p>
+                        <p>  Campus :{#app.user.campus#} </p>
+
+                        <input type="button" class= "btn btn-primary" value="Retour">
+            </div>
+        </div>
     </div>
-
-    <div class="profil">
-<h1>{{ app.user.pseudo}} </h1>
-
-<p>  Prénom :{{ app.user.prenom}} </p>
-<p>  Nom :{{ app.user.nom}} </p>
-<p>  Télephone :{{ app.user.telephone}} </p>
-<p>  E-mail : {{ app.user.email}}</p>
-<p>  Campus :{#app.user.campus#} </p>
-
-<input type="button" class= "btn btn-primary" value="Retour">
-
-    </div>
-    </div>
-
+</div>
 {% endblock %}
