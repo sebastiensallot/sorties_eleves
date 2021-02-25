@@ -104,7 +104,7 @@
                                 <td>{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
                                 <td>{# sortie.participants #} {{ sortie.nbInscriptionsMax }}</td>
                                 <td>{{ sortie.etat }} </td>
-                                <td>{# participant.nom #}</td>
+                                <td>{{ app.user.prenom }} {{ app.user.nom }}</td>
                                 <td>
                                     <a href="{{ path('afficher_sortie', {'id': sortie.id}) }}">
                                         <button class="btn btn-primary" type="submit">Afficher</button>

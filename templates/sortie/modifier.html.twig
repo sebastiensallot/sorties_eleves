@@ -16,11 +16,11 @@
         <a href="{{ path('listSorties') }}">
             <button class= "btn btn-primary" type="submit"> Publier une sortie </button>
         </a>
-        <a href="{{ path('sortie_delete') }}">
+        <a href="{{ path('sortie_delete', {'id': sortie.id}) }}">
             <button class= "btn btn-primary" type="submit"> Supprimer une sortie </button>
         </a>
         <a href="{{ path('listSorties') }}">
-        <button class= "btn btn-primary" type="submit"> Annuler </button><br>
+        <button class= "btn btn-primary"> Annuler </button><br>
         </a>
 
         {{ form_end(sortieForm) }}<br><br>
