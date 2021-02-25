@@ -7,11 +7,13 @@
             <!-- date + nom -->
             <div class="container">
             <div class="row justify-content-center">
+                <div class="col-md-4">
 
-                <div class="col-md-4 >
-                    <div class="jumbotron"><span class="align-middle"></span>
+
+
                         <p class="date"> Date du jour : {{ "now" | date('d/m/y') }}</p>
                         <p class="date"> Participant : {{ app.user.nom | upper }} &nbsp {{ app.user.prenom }}</p>
+
                     </div>
                 </div>
 
@@ -35,7 +37,6 @@
 
                             </select>
                         </div>
-
 
                         <div class="temps">
                             <label for="start">Du:</label>
@@ -129,5 +130,5 @@
                     </div>
                 </div>
             </div>
-            </div>
+
         {% endblock %}
