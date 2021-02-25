@@ -4,16 +4,21 @@
 
     {% block main %}
 
+    <div class="container">
+        <div class="row justify-content-center">
 
+            <div class="col-md-2 col-md-8 col-md-2">
+                <div class="jumbotron"><span class="align-middle"></span>
             <form class="box" method="POST">
 
                 <h1>Connectez-vous !</h1>
-
-                <label for="pseudo">Pseudo</label>
+                <div class="col-md-4 ml-auto mr-auto">
+                <label  for="pseudo">Pseudo :</label>
              <input type="text" name="_username" id="pseudo"><br><br>
 
-                 <label for="motDePasse">Mot de Passe</label>
+                 <label  for="motDePasse">Mot de Passe :</label>
                  <input type="password" name="_password" id="motDePasse"><br><br>
+                </div>
 
             <div id="connexion">
                     <a href={{ path('login') }}>
@@ -26,9 +31,11 @@
                     <a href=""> Mot de passe oublié </a> <br><br>
                 </div>
 
-            </div><br>
+            </div>
          </form>
-
+                </div>
+            </div>
+        </div>
     {% endblock %}
 
 

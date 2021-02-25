@@ -34,7 +34,8 @@ th, td
 .photo
 {
     margin-top: 15%;
-    margin-left: 25%;
+    padding-top: 15%;
+    padding-left: 15%;
 }
 
 
@@ -65,4 +66,43 @@ th, td
 .flash-error
 {
     background-color: red;
+}
+
+
+
+.affichage_sortie
+
+{
+    font-family: Verdana, sans-serif;
+    color: white;
+    text-align: center;
+
+}
+
+.centre
+{
+
+
+}
+
+.inscription
+
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 15px;
+
+}
+
+.testM
+{
+    margin-left: auto;
+    margin-right: auto;
+
+
+
+}
+
+.jumbotron {
+    margin-top: 5%;
 }

@@ -4,38 +4,47 @@
 
 {% block main %}
 
+<div class="container">
+    <div class="row justify-content-center">
 
-      <div class="affichage_sortie">
+        <div class="col-md-2 col-md-8 col-md-2">
+            <div class="jumbotron"><span class="align-middle"></span>
 
-         <p>  Nom de la sortie : {{ sortie.nom }} </p>
-         <p>  Date et Heure de la sortie : {{ sortie.dateHeureDebut | date("Y-m-d H:i") }} </p>
-         <p>  Date limite d'inscription : {{ sortie.dateLimiteInscription | date("Y-m-d H:i") }} </p>
-         <p>  Nombre de places : {{ sortie.nbInscriptionsMax }}</p>
-         <p>  Durée : {{ sortie.duree | date("H:i") }} minutes </p>
-         <p>  Description et infos : {{ sortie.infosSortie }} </p>
+                      <div class="affichage_sortie">
 
-      </div>
+                         <p>  Nom de la sortie : {{ sortie.nom }} </p>
+                         <p>  Date et Heure de la sortie : {{ sortie.dateHeureDebut | date("Y-m-d H:i") }} </p>
+                         <p>  Date limite d'inscription : {{ sortie.dateLimiteInscription | date("Y-m-d H:i") }} </p>
+                         <p>  Nombre de places : {{ sortie.nbInscriptionsMax }}</p>
+                         <p>  Durée : {{ sortie.duree | date("H:i") }} minutes </p>
+                         <p>  Description et infos : {{ sortie.infosSortie }} </p>
 
-
-
-    <p>Liste des participants : </p>
-
-   <table>
-        <tr>
-            <th> Pseudo </th>
-            <th> Nom </th>
-        </tr>
-
-    {% for participant in sortie.participants %}
-       <tr>
-            <td>{{ app.user.pseudo }}</td>
-            <td>{{ app.user.nom }} {{ app.user.prenom }}</td>
-       </tr>
-    {% endfor %}
-
-    </table>
+                      </div>
 
 
 
+                <p><u>Liste des participants : </u></p>
+                <div class="col-md-4 ml-auto mr-auto">
+                   <table>
+                        <tr>
+                            <th> Pseudo </th>
+                            <th> Nom </th>
+                        </tr>
+
+                    {% for participant in sortie.participants %}
+                       <tr>
+                            <td>{{ app.user.pseudo }}</td>
+                            <td>{{ app.user.nom }} {{ app.user.prenom }}</td>
+                       </tr>
+                    {% endfor %}
+
+                    </table>
+                </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
 {% endblock %}
 
