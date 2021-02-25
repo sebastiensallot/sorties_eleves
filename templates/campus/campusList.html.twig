@@ -1,0 +1,45 @@
+{% extends 'user/espaceAbonnes.html.twig' %}
+
+{% block title %} Gérer les campus {% endblock %}
+
+{% block main %}
+
+    <h2>Gérer les campus</h2><br><br>
+
+
+    <p>Le nom contient :</p>
+    <input type="search">
+
+    <button class="btn btn-primary" type="submit">Rechercher</button><br><br>
+
+    <div class="campusList">
+        <table>
+
+            <tr>
+                <th>Campus</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for campus in campusList %}
+            <tr>
+                <td>{{ campus.nom }}</td>
+
+                <td>
+                    <a href="{{ path('campus_update', {'id': campus.id}) }}">
+                        <button class="btn btn-primary" type="submit">Modifier</button>
+                    </a>
+                    <a href="{{ path('campus_delete', {'id': campus.id}) }}">
+                        <button class="btn btn-primary" type="submit">Supprimer</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table><br>
+
+        <a href="{{ path('campus_add') }}">
+            <button class="btn btn-primary" type="submit">Ajouter un campus</button>
+        </a>
+    </div>
+
+{% endblock %}

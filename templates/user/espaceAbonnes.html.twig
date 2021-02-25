@@ -1,106 +1,133 @@
-{% extends 'base.html.twig'%}
-{% block title %} espaceAbonnes {% endblock %}
+{% extends 'base.html.twig' %}
+        {% block title %} Accueil Abonnés {% endblock %}
 
-{% block main %}
-
-<div class="identification">
-
-    <input type="date"value="dd-mm-yyyy">
-    <p>  Participant :  {{ app.user.nom|upper}} &nbsp {{ app.user.prenom}}</p>
-</div>
-    <div class="campus">
-        <h4>Filter les sorties</h4>
-<label type ="Campus">Campus</label><br>
-<select name="campus" id="campus"></select><br><br>
-
-    <label for="site-search">Le nom de la sortie contient:</label>
-    <button> <input type="search" placeholder="search" id="site-search" name="q"
-           aria-label="Search through site content">ok</button><br>
-
-    <label for="start">Entrée:</label>
-        <input type="date" id="start"name="trip-start"
-               value="datetime"min="2021-01-31" max="2022-01-31">
-    <label for="start">Et:</label>
-    <input type="date" id="start"name="trip-start"
-           value="datetime"min="2021-01-31" max="2022-01-31"><br>
-    </div>
-    <div class="checkbox"  >
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties dont je suis l'organisateur/trice
-    </label><br>
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties auxquelles je suis inscrit/e
-    </label><br>
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties auxquelles je ne suis pas inscrit/e
-    </label><br>
-    <input type="checkbox" id="choix" name="choix">
-    <label for="choix"class="choiceLabel">
-        Sorties passées
-    </label><br><br>
-  </div>
-
-    <table>
-
-<tr>
-    <th>Nom de la sortie</th>
-    <th>Date de la sortie</th>
-    <th>Clôture</th>
-    <th>inscrits/places</th>
-    <th>Etat</th>
-    <th>Inscrit</th>
-    <th>Organisateur</th>
-    <th>Actions</th>
-</tr>
+        {% block main %}
 
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+            <!-- date + nom -->
+            <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-4 >
+                    <div class="jumbotron"><span class="align-middle"></span>
+                        <p class="date"> Date du jour : {{ "now" | date('d/m/y') }}</p>
+                        <p class="date"> Participant : {{ app.user.nom | upper }} &nbsp {{ app.user.prenom }}</p>
+                    </div>
+                </div>
 
 
-    </table><br><br>
-    <button type="submit"> Rechercher</button>
-    <button type="submit"> Créer une sortie</button><br>
+                <!-- filtre + date -->
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="campus">
 
-{% endblock %}
+                            <h3>Filtrer les sorties</h3>
+
+                            <label for="campus_name">Campus</label>
+
+                            <select name="campus_liste" id="campus_liste">
+
+                                <option style="display:none">
+
+                                    {% for campus in campusList %}
+                                <option>{{ campus.nom }}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+
+
+                        <div class="temps">
+                            <label for="start">Du:</label>
+                            <input type="date" id="start" name="trip-start"
+                                   value="date" min="2021-01-31" max="2022-01-31"><br>
+                            <label for="start">Au:</label>
+                            <input type="date" id="start" name="trip-start"
+                                   value="date" min="2021-01-31" max="2022-01-31">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="select">
+                            <div>
+                                <input type="checkbox" id="sortie_org" name="sortie_org"
+                                       checked>
+                                <label for="sortie_org">Sorties dont je suis l'organisateur/trice</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="sortie_inscrits" name="sortie_inscrits">
+                                <label for="sortie_inscrits">Sorties auxquelles je suis inscrit/e</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="sortie_pas_inscrits" name="sortie_pas_inscrits">
+                                <label for="sortie_pas_inscrits">Sorties auxquelles je ne suis pas inscrit/e</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="sortie_passées" name="sortie_passées">
+                                <label for="sortie_passées">Sorties passées</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="recherche">
+                            <button type="button" class="btn btn-primary btn-lg">Rechercher</button>
+                        </div>
+                    </div>
+                </div><br><br>
+
+                <!-- Tableau -->
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <table>
+                            <tr>
+                                <th>Nom de la sortie</th>
+                                <th>Date de la sortie</th>
+                                <th>Clôture</th>
+                                <th>Inscrits/Places</th>
+                                <th>Etat</th>
+                                <th>Organisateur</th>
+                                <th>Actions</th>
+                            </tr>
+
+
+                            {% for sortie in sortieList %}
+                            <tr>
+                                <td>{{ sortie.nom }}</td>
+                                <td>{{ sortie.dateHeureDebut | date("d/m/Y H:i") }}</td>
+                                <td>{{ sortie.dateLimiteInscription | date("d/m/Y") }}</td>
+                                <td>{# sortie.participants #} {{ sortie.nbInscriptionsMax }}</td>
+                                <td>{{ sortie.etat }} </td>
+                                <td>{{ app.user.prenom }} {{ app.user.nom }}</td>
+                                <td>
+                                    <a href="{{ path('afficher_sortie', {'id': sortie.id}) }}">
+                                        <button class="btn btn-primary" type="submit">Afficher</button>
+                                    </a>
+                                    <a href="{{ path('sortie_update', {'id': sortie.id}) }}">
+                                        <button class="btn btn-primary" type="submit">Modifier</button>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div><br><br>
+                <div class="row">
+                    <div class="col-lg-3">
+
+                        <a href="{{ path('creer_sortie') }}">
+                            <button type="button" class="btn btn-primary btn-lg">Créer une sortie</button>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        {% endblock %}

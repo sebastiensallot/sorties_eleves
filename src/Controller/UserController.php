@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Campus;
 use App\Entity\Participant;
 use App\Form\InscriptionType;
+use App\Repository\CampusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,9 +16,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="accueil")
+     * @Route("/"), name="home")
      */
-    public function accueil(): Response
+    public function home()
     {
         return $this->render('user/home.html.twig');
     }
@@ -27,42 +29,44 @@ class UserController extends AbstractController
      */
     public function inscription(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
     {
+        //@todo: créer un participant
+
         $participant = new Participant();
         $participant->setAdministrateur(false);
         $participant->setActif(true);
         $inscriptionForm = $this->createForm(InscriptionType::class, $participant);
+
         $inscriptionForm->handleRequest($request);
-        if ($inscriptionForm->isSubmitted() && $inscriptionForm->isValid()) {
+        if ($inscriptionForm->isSubmitted() && $inscriptionForm->isValid())
+        {
             $password = $inscriptionForm->get('motDePasse')->getData();
             $participant->setMotDePasse($encoder->encodePassword($participant, $password));
+
             $em->persist($participant);
             $em->flush();
 
-            $this->addFlash('success', 'L\'utilisateur a bien été enregistré !');
-            return $this->redirectToRoute('accueil', ['id' => $participant->getId()]);
+
+            return $this->redirectToRoute('app_user_home', ['id' => $participant->getId()]);
         }
 
-        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView()]);
+        //@todo: liste des campus
+
+        $campusRepo = $this->getDoctrine()->getRepository(Campus::class);
+        $campusList= $campusRepo->findAll();
+
+        return $this->render('user/inscription.html.twig', ['inscriptionForm' => $inscriptionForm->createView(), 'campusList' => $campusList]);
     }
 
+
+
     /**
-     * @Route("/profil", name="profil")
-     */
-    public function description(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
+    * @Route("/profil", name="profil")
+    */
+    public function description(): Response
+
     {
         return $this->render('user/Profil.html.twig');
     }
-
-    /**
-     * @Route("/espaceAbonnes", name="espaceAbonnes")
-     */
-    public function abonnes(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder): Response
-    {
-
-        return $this->render('user/espaceAbonnes.html.twig');
-    }
-
-
 
 
 

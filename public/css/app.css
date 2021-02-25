@@ -5,12 +5,8 @@
 
 body
 {
-    background-color: black;
     text-align: center;
-    font-family: Anton;
-
-
-
+    font-family: Verdana, sans-serif;
 }
 
 .logo
@@ -18,121 +14,95 @@ body
     text-align: center;
 }
 
+table
+{
+    border-collapse: collapse;
+}
+
+th, td
+{
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.container
+{
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.photo
+{
+    margin-top: 15%;
+    padding-top: 15%;
+    padding-left: 15%;
+}
+
+
+.campusList
+{
+    position: absolute;
+    right: 40%;
+}
+
+.villesList
+{
+    position: absolute;
+    right: 37%;
+}
+
+.flash
+{
+    padding: 30px;
+    font-size: 30px;
+    color: white;
+}
+
+.flash-success
+{
+    background-color: green;
+}
+
+.flash-error
+{
+    background-color: red;
+}
+
+
+
+.affichage_sortie
+
+{
+    font-family: Verdana, sans-serif;
+    color: white;
+    text-align: center;
+
+}
+
+.centre
+{
+
+
+}
+
 .inscription
+
 {
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-    width: 300px;
-    height: 150px;
+    width: 15px;
 
+}
+
+.testM
+{
+    margin-left: auto;
+    margin-right: auto;
 
 
 
 }
 
-.photo img
-{
-
-    width: 250px;
-    height: 250px;
-    margin-left: 25%;
-
-}
-
-.ensemble-block
-
-{
-    display: flex;
+.jumbotron {
     margin-top: 5%;
 }
-
-.profil
-{
-    position: absolute;
-    right: 50%;
-
-}
-table
-{   margin-right: auto;
-    margin-left: auto;
-    border-collapse: collapse
-}
-th,td
-{
-    border : 2px solid white;
-   border-color: #FFFFFF;
-}
-.identification
-{
-    text-align: right;
-}
-.campus
-{
-
-
-
-    color: white;
-    font-size: large;
-
-
-
-}
-
-.temps
-
-{
-
-    color: white;
-
-
-}
-.checkbox
-{
-    text-align: right;
-}
-
-.date
-{
-    text-align: right;
-
-    font-family: Anton;
-    color: white;
-    font-size: large;
-
-}
-
-.recherche
-
-{
-    font-family: Anton;
-
-    text-align: right;
-}
-
-.creasortie
-
-{
-    text-align: left;
-
-}
-
-.select
-{
-    font-family: Anton;
-
-    text-align: right;
-    color: white;
-    justify-items: left;
-
-
-}
-
-.list
-
-{
-    font-size: .9rem;
-    padding: 2px 5px;
-
-}
-
