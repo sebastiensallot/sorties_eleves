@@ -7,14 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\OneToMany;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ParticipantRepository::class)
- * @UniqueEntity(fields={"pseudo"})
- * @UniqueEntity(fields={"email"})
  */
 class Participant implements UserInterface
 {
@@ -27,36 +23,26 @@ class Participant implements UserInterface
 
     /**
      * @ORM\Column (type="string", length=255)
-     * @Assert\Length(min = 3, minMessage = "Le pseudo doit contenir {{limit}} caractère minimum",
-     *     allowEmptyString=false)
-
      */
     private $pseudo;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\Length(min = 3, minMessage = "Le nom doit contenir {{limit}} caractère minimum",
-     *     allowEmptyString=false)
-     * @Assert\NotBlank()
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="integer", length=10)
-     * @
+     * @ORM\Column(type="string", length=255)
      */
     private $telephone;
 
     /**
-     * @ORM\Column(name="email",type="string", length=255)
-     * @Assert\Email( message="Le format de l'email est incorrect")
-     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
 
@@ -95,6 +81,9 @@ class Participant implements UserInterface
      * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="campus")
      */
     private $participants_campus;
+
+
+
 
 
 

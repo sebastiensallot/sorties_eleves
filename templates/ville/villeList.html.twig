@@ -1,0 +1,54 @@
+{% extends 'user/espaceAbonnes.html.twig' %}
+
+{% block title %} Gérer les villes {% endblock %}
+
+{% block main %}
+    <div class="container">
+    <div class="row justify-content-center">
+
+    <div class="col-md-2 col-md-8 col-md-2">
+    <div class="jumbotron"><span class="align-middle"></span>
+    <h2> Gérer les villes </h2><br><br>
+
+
+    <p>Le nom contient :</p>
+    <input type="search">
+
+    <button class="btn btn-primary" type="submit">Rechercher</button><br><br>
+
+        <div class="col align-self-center">
+        <table>
+
+            <tr>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for ville in villeList %}
+                <tr>
+                    <td>{{ ville.nom }}</td>
+                    <td>{{ ville.codePostal }}</td>
+
+                    <td>
+                        <a href="{{ path('ville_update', {'id': ville.id}) }}">
+                        <button class="btn btn-primary" type="submit">Modifier</button>
+                        </a>
+                        <a href="{{ path('ville_delete', {'id': ville.id}) }}">
+                        <button class="btn btn-primary" type="submit">Supprimer</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table><br>
+        </div>
+        <a href="{{ path('ville_add') }}">
+            <button class="btn btn-primary" type="submit">Ajouter une ville</button>
+        </a><br>
+
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

@@ -14,11 +14,7 @@ security:
                 check_path: login
                 default_target_path: listSorties
 
-            remember_me:
-                secret: '%kernel.secret%'
-                lifetime: 2592000 #30 days en secondes
-
-            #logout_on_user_chlange: true
+            #logout_on_user_change: true
             logout:
                 path: logout
                 target: /

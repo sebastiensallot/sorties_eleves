@@ -81,8 +81,7 @@ class SortieController extends AbstractController
         $sortieForm = $this->createForm(EspaceAbonnesType::class, $sortie);
         $sortieForm->handleRequest($request);
 
-        if ($sortieForm->isSubmitted() && $sortieForm->isValid())
-        {
+        if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
             $em->persist($sortie);
             $em->flush();
 

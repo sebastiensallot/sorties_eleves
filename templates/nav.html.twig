@@ -6,16 +6,20 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
+            {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item active">
-                <a class="nav-link" href="#">Villes
+                <a class="nav-link" href="{{ path('ville_list') }}">Villes
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Campus</a>
+                <a class="nav-link" href="{{ path('campus_list') }}">Campus</a>
             </li>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <li class="nav-item">
-                <a class="nav-link" href={{ path('accueil') }}>Accueil</a>
+                <a class="nav-link" href={{ path('listSorties') }}>Accueil</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href={{ path('profil') }}>Mon Profil</a>
@@ -23,6 +27,7 @@
             <li class="nav-item">
                 <a class="nav-link" href={{ path('logout') }}>Se déconnecter</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
