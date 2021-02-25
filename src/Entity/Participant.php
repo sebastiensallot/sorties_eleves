@@ -7,10 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\OneToMany;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ParticipantRepository::class)
+ * @UniqueEntity(fields={"pseudo"})
+ * @UniqueEntity(fields={"email"})
  */
 class Participant implements UserInterface
 {
@@ -23,26 +27,36 @@ class Participant implements UserInterface
 
     /**
      * @ORM\Column (type="string", length=255)
+     * @Assert\Length(min = 3, minMessage = "Le pseudo doit contenir {{limit}} caractère minimum",
+     *     allowEmptyString=false)
+
      */
     private $pseudo;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Assert\Length(min = 3, minMessage = "Le nom doit contenir {{limit}} caractère minimum",
+     *     allowEmptyString=false)
+     * @Assert\NotBlank()
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", length=10)
+     * @
      */
     private $telephone;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="email",type="string", length=255)
+     * @Assert\Email( message="Le format de l'email est incorrect")
+     * @Assert\NotBlank
      */
     private $email;
 
@@ -64,23 +78,8 @@ class Participant implements UserInterface
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    private $roles=["ROLE_USER"];
+    private $roles = ["ROLE_USER"];
 
-    /**
-     * @return string[]
-     */
-    public function getRoles(): array
-    {
-        return $this->roles;
-    }
-
-    /**
-     * @param string[] $roles
-     */
-    public function setRoles(array $roles): void
-    {
-        $this->roles = $roles;
-    }
 
     /**
      * @ORM\ManyToMany (targetEntity="App\Entity\Sortie", mappedBy="participants")
@@ -92,6 +91,10 @@ class Participant implements UserInterface
         $this->sorties = new ArrayCollection();
     }
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campus", inversedBy="campus")
+     */
+    private $participants_campus;
 
 
 
@@ -225,6 +228,23 @@ class Participant implements UserInterface
     public function eraseCredentials() {}
 
     /**
+     * @return string[]
+     */
+    public function getRoles(): array
+    {
+       return $this->roles;
+    }
+
+    /**
+     * @param string[] $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+
+    /**
      * @return ArrayCollection
      */
     public function getSorties(): ArrayCollection
@@ -239,6 +259,24 @@ class Participant implements UserInterface
     {
         $this->sorties = $sorties;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipantsCampus()
+    {
+        return $this->participants_campus;
+    }
+
+    /**
+     * @param mixed $participants_campus
+     */
+    public function setParticipantsCampus($participants_campus): void
+    {
+        $this->participants_campus = $participants_campus;
+    }
+
+
 
 
 }

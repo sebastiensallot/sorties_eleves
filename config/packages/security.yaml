@@ -12,16 +12,20 @@ security:
             form_login:
                 login_path: login
                 check_path: login
-                default_target_path: espaceAbonnes
+                default_target_path: listSorties
 
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 2592000 #30 days en secondes
 
-            #logout_on_user_change: true
+            #logout_on_user_chlange: true
             logout:
                 path: logout
-                target: accueil
+                target: /
     encoders:
         App\Entity\Participant:
             algorithm: bcrypt
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }
