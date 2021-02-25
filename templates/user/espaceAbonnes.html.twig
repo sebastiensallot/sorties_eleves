@@ -108,6 +108,10 @@
                                     <a href="{{ path('afficher_sortie', {'id': sortie.id}) }}">
                                         <button class="btn btn-primary" type="submit">Afficher</button>
                                     </a>
+                                    <a href="{{ path('sortie_update', {'id': sortie.id}) }}">
+                                        <button class="btn btn-primary" type="submit">Modifier</button>
+                                    </a>
+
                                 </td>
                             </tr>
                             {% endfor %}

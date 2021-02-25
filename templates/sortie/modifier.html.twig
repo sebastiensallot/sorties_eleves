@@ -1,0 +1,30 @@
+{% extends 'user/espaceAbonnes.html.twig' %}
+
+{% block title %} Modifier une sortie {% endblock %}
+
+{% block main %}
+
+    <h2>Modifier une sortie</h2><br>
+
+    <div class="sortie">
+        {{ form_start(sortieForm) }}
+        {{ form_widget(sortieForm) }}<br>
+
+        <a href="{{ path('listSorties') }}">
+            <button class= "btn btn-primary" type="submit"> Enregistrer </button>
+        </a>
+        <a href="{{ path('listSorties') }}">
+            <button class= "btn btn-primary" type="submit"> Publier une sortie </button>
+        </a>
+        <a href="{{ path('sortie_delete') }}">
+            <button class= "btn btn-primary" type="submit"> Supprimer une sortie </button>
+        </a>
+        <a href="{{ path('listSorties') }}">
+        <button class= "btn btn-primary" type="submit"> Annuler </button><br>
+        </a>
+
+        {{ form_end(sortieForm) }}<br><br>
+    </div>
+
+{% endblock %}
+

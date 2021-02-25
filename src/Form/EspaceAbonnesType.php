@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\Sortie;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,12 +16,11 @@ class EspaceAbonnesType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('dateHeureDebut')
-            ->add('duree')
-            ->add('dateLimiteInscription')
+            ->add('dateHeureDebut', DateTimeType::class)
+            ->add('duree', TimeType::class)
+            ->add('dateLimiteInscription', DateType::class)
             ->add('nbInscriptionsMax')
             ->add('infosSortie')
-            ->add('etat')
 
         ;
     }

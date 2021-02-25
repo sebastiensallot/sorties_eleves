@@ -9,12 +9,44 @@
         {{ form_start(sortieForm) }}
         {{ form_widget(sortieForm) }}<br>
 
+            <label for="campus">Campus :
+                <select>
+                    <option style="display:none">
+                {% for campus in campusList %}
+                   <option>{{ campus.nom }}</option>
+                {% endfor %}
+                </select>
+            </label><br>
+
+        <label for="cp">Ville :
+            <select>
+                <option style="display:none">
+                {% for ville in villeList %}
+                    <option>{{ ville.nom }}</option>
+                {% endfor %}
+            </select>
+        </label><br>
+
+        <label for="lieu">Lieu :
+            <select>
+                <option style="display:none">
+                {% for lieu in lieuList %}
+                    <option>{{ lieu.nom }}</option>
+                {% endfor %}
+            </select>
+        </label><br>
+
+        <p>Rue : {{ lieu.rue }}</p>
+
+
+
         <button class= "btn btn-primary" type="submit"> Enregister </button>
         <a href="{{ path('listSorties') }}">
         <button class= "btn btn-primary" type="submit"> Publier une sortie </button>
         </a>
-        <button class= "btn btn-primary" type="submit"> Annuler </button><br>
-
+        <a href="{{ path('listSorties') }}">
+        <button class= "btn btn-primary"> Annuler </button><br>
+        </a>
 
         {{ form_end(sortieForm) }}<br><br>
     </div>
