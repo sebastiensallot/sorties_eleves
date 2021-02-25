@@ -3,7 +3,11 @@
 {% block title %} Gérer les villes {% endblock %}
 
 {% block main %}
+    <div class="container">
+    <div class="row justify-content-center">
 
+    <div class="col-md-2 col-md-8 col-md-2">
+    <div class="jumbotron"><span class="align-middle"></span>
     <h2> Gérer les villes </h2><br><br>
 
 
@@ -12,7 +16,7 @@
 
     <button class="btn btn-primary" type="submit">Rechercher</button><br><br>
 
-    <div class="villesList">
+        <div class="col align-self-center">
         <table>
 
             <tr>
@@ -38,10 +42,13 @@
             {% endfor %}
 
         </table><br>
-
+        </div>
         <a href="{{ path('ville_add') }}">
             <button class="btn btn-primary" type="submit">Ajouter une ville</button>
         </a><br>
-    </div>
 
+    </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}
