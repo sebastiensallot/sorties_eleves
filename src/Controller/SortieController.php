@@ -96,7 +96,7 @@ class SortieController extends AbstractController
 
 
     /**
-     * @Route("/sortie/delete/{id}", name="sortie_delete", requirements={"id": "\d+"}, methods={"GET"})
+     * @Route("/sortie/delete/{id}", name="sortie_delete", requirements={"id": "\d+"})
      */
     public function sortieSupprimer($id, EntityManagerInterface $em, SortieRepository $repository):Response
     {
